@@ -88,7 +88,7 @@ cookie jar.
 | key | meaning |
 |---|---|
 | `channels` | list of `{name, url}`; `name` becomes the subfolder |
-| `output_dir` | parent directory; each channel gets its own subfolder under it |
+| `output_dir` | parent directory; each channel gets its own subfolder under it. `null` picks the platform default: `~/Movies/VKVideo` on macOS, `~/Videos/VKVideo` elsewhere |
 | `max_height` | `0` for best available, or e.g. `1080` |
 | `retention_days` | delete downloads older than this; `0` disables |
 | `scan_depth` | how many newest playlist items to inspect per run |
@@ -136,8 +136,12 @@ system sleep only while on AC power. On battery, or with the lid closed, the mac
 still sleep mid-download — the transfer resumes on the next run rather than being lost.
 
 On Linux, skip the three shell scripts and point a systemd timer or cron entry at
-`python3 sync.py`. `sync.py` itself is portable; only its desktop notification is
-macOS-specific, and that degrades to a no-op elsewhere.
+`python3 sync.py`.
+
+`sync.py` requires a POSIX system — macOS and Linux are supported, **Windows is not**.
+The run lock uses `fcntl` and the per-video timeout kills a process group via
+`os.killpg`, neither of which exists on Windows. The desktop notification is
+macOS-specific but degrades to a no-op elsewhere.
 
 ## Note
 

@@ -25,7 +25,7 @@ PRUNABLE = {".mp4", ".mkv", ".webm", ".m4a", ".mp3", ".jpg", ".jpeg", ".png",
 
 DEFAULTS = {
     "channels": [],
-    "output_dir": "~/Movies/VKVideo",
+    "output_dir": None,
     "max_height": 0,
     "retention_days": 0,
     "scan_depth": 30,
@@ -42,6 +42,10 @@ DEFAULTS = {
 }
 
 LIST_TIMEOUT = 180
+
+
+def default_output_dir():
+    return "~/Movies/VKVideo" if sys.platform == "darwin" else "~/Videos/VKVideo"
 
 
 def log(msg):
@@ -87,7 +91,8 @@ def load_config(path, required):
         raise SystemExit(
             f"no config at {p}\ncopy config.example.json to config.json and edit it, "
             f"or pass a playlist URL directly")
-    cfg["output_dir"] = Path(os.path.expanduser(str(cfg["output_dir"])))
+    cfg["output_dir"] = Path(os.path.expanduser(
+        str(cfg["output_dir"] or default_output_dir())))
     return cfg
 
 

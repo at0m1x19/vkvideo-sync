@@ -5,7 +5,7 @@
       "url": "https://vkvideo.ru/playlist/-000000000_0"
     }
   ],
-  "output_dir": "~/Movies/VKVideo",
+  "output_dir": null,
   "max_height": 0,
   "retention_days": 30,
   "scan_depth": 30,
