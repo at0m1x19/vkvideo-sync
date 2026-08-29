@@ -1,0 +1,22 @@
+{
+  "channels": [
+    {
+      "name": "my-playlist",
+      "url": "https://vkvideo.ru/playlist/-000000000_0"
+    }
+  ],
+  "output_dir": "~/Movies/VKVideo",
+  "max_height": 0,
+  "retention_days": 30,
+  "scan_depth": 30,
+  "max_new_per_run": 20,
+  "max_run_hours": 4,
+  "first_run_take": 5,
+  "per_video_timeout_min": 60,
+  "concurrent_fragments": 16,
+  "aria2_connections": 16,
+  "write_thumbnail": false,
+  "cookies_from_browser": null,
+  "cookies_file": null,
+  "notify": true
+}

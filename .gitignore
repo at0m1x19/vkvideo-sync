@@ -1,0 +1,7 @@
+config.json
+logs/
+state/
+*.part
+*.ytdl
+.DS_Store
+__pycache__/
